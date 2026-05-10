@@ -88,7 +88,7 @@ body { display: flex; flex-direction: column; }
 .dt-check.done::after { content: '✓'; font-size: 12px; color: #000; font-weight: 700; }
 .dt-name { flex: 1; font-size: 14px; font-weight: 500; }
 .dt-name.done { text-decoration: line-through; color: var(--text3); }
-.dt-xp { font-size: 10px; font-family: var(--mono); color: var(--accent2); flex-shrink: 0; }
+
 .dt-del { background: none; border: none; color: var(--text3); font-size: 15px; cursor: pointer; padding: 4px; flex-shrink: 0; opacity: 0; transition: opacity 0.2s; }
 .dt-item:hover .dt-del { opacity: 1; }
 
@@ -327,7 +327,6 @@ hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
         </div>
         <div style="text-align:right;">
           <div style="font-size:11px;color:var(--text3);font-family:var(--mono);">HÔM NAY</div>
-          <div style="font-size:13px;color:var(--accent2);margin-top:2px;" id="daily-xp-earned">+0 XP</div>
         </div>
       </div>
       <div class="daily-bar"><div class="daily-bar-fill" id="daily-bar-fill" style="width:0%"></div></div>
@@ -360,12 +359,55 @@ hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
 
 
 
+<!-- PAGE: STATS -->
+<div class="page" id="page-stats">
+  <div class="app-header">
+    <h1>StudyFlow</h1>
+    <h2>Thống kê</h2>
+  </div>
+  <div class="page-inner" style="padding-top:16px;">
+    <div class="metric-grid" style="margin-bottom:12px;">
+      <div class="metric-box">
+        <div class="val" id="stats-streak" style="color:var(--amber);">0🔥</div>
+        <div class="lbl">Ngày liên tiếp</div>
+      </div>
+      <div class="metric-box">
+        <div class="val" id="stats-total-hours" style="color:var(--blue);">0h</div>
+        <div class="lbl">Tổng thời gian</div>
+      </div>
+    </div>
+    <div class="sec">7 ngày gần nhất (phút)</div>
+    <div class="card" style="padding:16px 12px 12px;">
+      <div id="stats-chart" style="display:flex;align-items:flex-end;gap:5px;height:80px;"></div>
+      <div id="stats-chart-labels" style="display:flex;gap:5px;margin-top:6px;"></div>
+    </div>
+    <div class="sec">Môn học nhiều nhất (hôm nay)</div>
+    <div id="stats-subjects"></div>
+  </div>
+</div>
+
+<!-- MODAL: EDIT NOTE -->
+<div class="modal-overlay" id="edit-note-modal" onclick="closeModal('edit-note-modal',event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Chỉnh sửa ghi chú</div>
+    <div class="field"><label>Tiêu đề</label><input type="text" id="en-title" placeholder="Tiêu đề..."/></div>
+    <div class="field"><label>Nội dung</label><textarea id="en-body" placeholder="Nội dung..."></textarea></div>
+    <div class="field"><label>Ngày liên quan</label><input type="date" id="en-date"/></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('edit-note-modal')">Huỷ</button>
+      <button class="btn btn-primary" onclick="saveEditNote()">Lưu</button>
+    </div>
+  </div>
+</div>
+
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
   <button class="nav-btn active" onclick="switchPage('today',this)"><span class="nav-icon">🏠</span><span>Hôm nay</span></button>
   <button class="nav-btn" onclick="switchPage('timer',this)"><span class="nav-icon">⏱</span><span>Bấm giờ</span></button>
   <button class="nav-btn" onclick="switchPage('tasks',this)"><span class="nav-icon">✅</span><span>Việc làm</span></button>
   <button class="nav-btn" onclick="switchPage('notes',this)"><span class="nav-icon">📝</span><span>Ghi chú</span></button>
+  <button class="nav-btn" onclick="switchPage('stats',this)"><span class="nav-icon">📊</span><span>Thống kê</span></button>
 </nav>
 
 <!-- MODAL: ADD CATEGORY -->
@@ -461,13 +503,11 @@ function confirmCancel() {
 
 // ─── STATE ─────────────────────────────────────────────────
 let notes = S.get('sf_notes') || [];
-let xp = S.get('sf_xp') || 0;
 let studyMins = S.get('sf_study_' + today()) || 0;
-let screenData = S.get('sf_screen_' + today()) || {};
 let sessions = S.get('sf_sessions_' + today()) || [];
 
 // ─── DAILY TASKS STATE ─────────────────────────────────────
-// categories: [{ id, name, icon, tasks: [{id, name, xp}] }]
+// categories: [{ id, name, icon, tasks: [{id, name}] }]
 // dailyTicks: { 'YYYY-MM-DD': { taskId: true } }
 let categories = S.get('sf_categories') || [];
 let dailyTicks = S.get('sf_daily_ticks') || {};
@@ -492,18 +532,15 @@ function isTaskDone(taskId) {
   return !!(getTodayTicks()[taskId]);
 }
 
-function toggleDailyTask(taskId, xpAmt) {
+function toggleDailyTask(taskId) {
   if (!dailyTicks[today()]) dailyTicks[today()] = {};
   const wasDone = dailyTicks[today()][taskId];
   if (wasDone) {
     delete dailyTicks[today()][taskId];
-    xp = Math.max(0, xp - xpAmt);
-    S.set('sf_xp', xp);
-    showToast('↩️ Bỏ tick · -' + xpAmt + ' XP');
+    showToast('↩️ Bỏ tick');
   } else {
     dailyTicks[today()][taskId] = true;
-    addXP(xpAmt);
-    showToast('✅ +' + xpAmt + ' XP!');
+    showToast('✅ Hoàn thành!');
   }
   saveTicks();
   renderDailyTasks();
@@ -526,6 +563,9 @@ updateClock();
 
 // ─── PAGES ─────────────────────────────────────────────────
 function switchPage(name, el) {
+  if (timerRunning && name !== 'timer') {
+    showToast('⏱ Timer đang chạy!');
+  }
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
@@ -537,6 +577,7 @@ function renderPage(name) {
   if (name === 'today') renderToday();
   if (name === 'tasks') renderDailyTasks();
   if (name === 'notes') renderNotes();
+  if (name === 'stats') renderStats();
 }
 
 // ─── TODAY ─────────────────────────────────────────────────
@@ -640,7 +681,7 @@ function addTaskToCategory(catId) {
   if (!name) return;
   const cat = categories.find(c => c.id === catId);
   if (!cat) return;
-  cat.tasks.push({ id: Date.now(), name, xp: 10 });
+  cat.tasks.push({ id: Date.now(), name });
   saveCategories();
   input.value = '';
   renderDailyTasks();
@@ -665,20 +706,18 @@ function toggleCatCollapse(catId) {
 
 function renderDailyTasks() {
   const ticks = getTodayTicks();
-  let totalAll = 0, doneAll = 0, xpEarned = 0;
+  let totalAll = 0, doneAll = 0;
   categories.forEach(cat => {
     cat.tasks.forEach(t => {
       totalAll++;
-      if (ticks[t.id]) { doneAll++; xpEarned += t.xp; }
+      if (ticks[t.id]) { doneAll++; }
     });
   });
   const pct = totalAll ? Math.round(doneAll / totalAll * 100) : 0;
 
-  // Summary
   document.getElementById('daily-pct').textContent = pct + '%';
   document.getElementById('daily-sub').textContent = doneAll + '/' + totalAll + ' nhiệm vụ hoàn thành';
   document.getElementById('daily-bar-fill').style.width = pct + '%';
-  document.getElementById('daily-xp-earned').textContent = '+' + xpEarned + ' XP hôm nay';
 
   const listEl = document.getElementById('cat-list');
   const emptyEl = document.getElementById('daily-empty');
@@ -696,10 +735,9 @@ function renderDailyTasks() {
     const catPct = catTotal ? Math.round(catDone / catTotal * 100) : 0;
     const tasksHTML = cat.tasks.map(t => {
       const done = !!ticks[t.id];
-      return `<div class="dt-item" onclick="toggleDailyTask(${t.id}, ${t.xp})">
+      return `<div class="dt-item" onclick="toggleDailyTask(${t.id})">
         <div class="dt-check ${done ? 'done' : ''}"></div>
         <div class="dt-name ${done ? 'done' : ''}">${t.name}</div>
-        <div class="dt-xp">+${t.xp} XP</div>
         <button class="dt-del" onclick="event.stopPropagation();deleteTaskFromCategory(${cat.id},${t.id})" title="Xoá">✕</button>
       </div>`;
     }).join('');
@@ -734,9 +772,17 @@ function renderNotes() {
   emptyEl.style.display = 'none';
   el.innerHTML = notes.slice().reverse().map(n => `
     <div class="note-card">
-      <div class="note-date">${n.date ? '📅 ' + n.date : '💡 Ghi chú'}</div>
-      <div class="note-title">${n.title}</div>
-      <div class="note-preview">${n.body}</div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+        <div style="flex:1;min-width:0;">
+          <div class="note-date">${n.date ? '📅 ' + n.date : '💡 Ghi chú'}</div>
+          <div class="note-title">${n.title}</div>
+          <div class="note-preview">${n.body}</div>
+        </div>
+        <div style="display:flex;gap:2px;flex-shrink:0;">
+          <button onclick="openEditNote(${n.id})" style="background:none;border:none;color:var(--text3);font-size:15px;cursor:pointer;padding:6px;" title="Sửa">✏️</button>
+          <button onclick="deleteNote(${n.id})" style="background:none;border:none;color:var(--text3);font-size:15px;cursor:pointer;padding:6px;" title="Xoá">🗑</button>
+        </div>
+      </div>
     </div>`).join('');
 }
 
@@ -763,10 +809,114 @@ function saveNote() {
   renderNotes();
 }
 
-// ─── XP ────────────────────────────────────────────────────
-function addXP(amount) {
-  xp += amount;
-  S.set('sf_xp', xp);
+let _editNoteId = null;
+function openEditNote(id) {
+  const n = notes.find(x => x.id === id);
+  if (!n) return;
+  _editNoteId = id;
+  document.getElementById('en-title').value = n.title;
+  document.getElementById('en-body').value = n.body || '';
+  document.getElementById('en-date').value = n.date || '';
+  document.getElementById('edit-note-modal').classList.add('open');
+}
+
+function saveEditNote() {
+  const title = document.getElementById('en-title').value.trim();
+  if (!title) { showToast('⚠️ Nhập tiêu đề'); return; }
+  const idx = notes.findIndex(x => x.id === _editNoteId);
+  if (idx === -1) return;
+  notes[idx] = { ...notes[idx], title, body: document.getElementById('en-body').value, date: document.getElementById('en-date').value };
+  S.set('sf_notes', notes);
+  closeModal('edit-note-modal');
+  showToast('✅ Đã cập nhật ghi chú');
+  renderNotes();
+}
+
+function deleteNote(id) {
+  showConfirm({
+    icon: '🗑', msg: 'Xoá ghi chú này?', sub: 'Ghi chú sẽ bị xoá vĩnh viễn.',
+    okLabel: 'Xoá', okStyle: 'background:var(--red);border-color:var(--red);color:#fff;',
+    onOK: () => {
+      notes = notes.filter(x => x.id !== id);
+      S.set('sf_notes', notes);
+      renderNotes();
+      showToast('🗑 Đã xoá ghi chú');
+    }
+  });
+}
+
+// ─── STATS ─────────────────────────────────────────────────
+function calcStreak() {
+  let streak = 0;
+  const d = new Date();
+  // If no study today, start checking from yesterday
+  if (!(S.get('sf_study_' + d.toISOString().slice(0,10)))) d.setDate(d.getDate() - 1);
+  for (let i = 0; i < 365; i++) {
+    const key = d.toISOString().slice(0,10);
+    if (S.get('sf_study_' + key) > 0) { streak++; d.setDate(d.getDate() - 1); }
+    else break;
+  }
+  return streak;
+}
+
+function renderStats() {
+  // Streak
+  const streak = calcStreak();
+  document.getElementById('stats-streak').textContent = streak + '🔥';
+
+  // Total study time across all stored keys
+  let totalMins = 0;
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith('sf_study_')) {
+      totalMins += (S.get(k) || 0);
+    }
+  }
+  const h = Math.floor(totalMins / 60), m = totalMins % 60;
+  document.getElementById('stats-total-hours').textContent = h > 0 ? h + 'h' + (m > 0 ? m + 'm' : '') : m + 'm';
+
+  // 7-day chart
+  const chartEl = document.getElementById('stats-chart');
+  const labelsEl = document.getElementById('stats-chart-labels');
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(); d.setDate(d.getDate() - i);
+    const key = d.toISOString().slice(0,10);
+    days.push({ label: d.toLocaleDateString('vi-VN',{weekday:'short'}), mins: S.get('sf_study_' + key) || 0 });
+  }
+  const maxMins = Math.max(...days.map(d => d.mins), 1);
+  chartEl.innerHTML = days.map(d => {
+    const pct = Math.round((d.mins / maxMins) * 100);
+    const isToday = days.indexOf(d) === 6;
+    return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div style="font-size:9px;font-family:var(--mono);color:var(--text3);">${d.mins > 0 ? d.mins+"'" : ''}</div>
+      <div style="width:100%;background:${isToday?'var(--accent)':'var(--accent)'};opacity:${isToday?1:0.45};border-radius:4px 4px 0 0;height:${Math.max(pct,2)}%;transition:height 0.4s ease;"></div>
+    </div>`;
+  }).join('');
+  labelsEl.innerHTML = days.map((d,i) => `<div style="flex:1;text-align:center;font-size:9px;font-family:var(--mono);color:${i===6?'var(--accent2)':'var(--text3)'};">${d.label}</div>`).join('');
+
+  // Subject breakdown from today's sessions
+  const subjectMap = {};
+  sessions.forEach(s => {
+    subjectMap[s.subject] = (subjectMap[s.subject] || 0) + (s.mins || 0);
+  });
+  const subjEl = document.getElementById('stats-subjects');
+  const sorted = Object.entries(subjectMap).sort((a,b) => b[1]-a[1]);
+  if (!sorted.length) {
+    subjEl.innerHTML = '<div style="font-size:13px;color:var(--text3);padding:8px 0;">Chưa có phiên học nào hôm nay</div>';
+  } else {
+    const maxS = sorted[0][1];
+    subjEl.innerHTML = sorted.map(([name, mins]) => `
+      <div class="card-sm" style="margin-bottom:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <div style="font-size:14px;font-weight:500;">${name}</div>
+          <div style="font-family:var(--mono);font-size:12px;color:var(--accent2);">${mins}'</div>
+        </div>
+        <div style="height:4px;background:var(--bg2);border-radius:999px;overflow:hidden;">
+          <div style="height:100%;width:${Math.round(mins/maxS*100)}%;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:999px;"></div>
+        </div>
+      </div>`).join('');
+  }
 }
 
 // ─── POMODORO ──────────────────────────────────────────────
@@ -836,6 +986,23 @@ function toggleTimer() {
   }
 }
 
+function playDoneSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    [523, 659, 784].forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = freq;
+      osc.type = 'sine';
+      gain.gain.setValueAtTime(0.3, ctx.currentTime + i * 0.18);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.18 + 0.4);
+      osc.start(ctx.currentTime + i * 0.18);
+      osc.stop(ctx.currentTime + i * 0.18 + 0.4);
+    });
+  } catch(e) {}
+}
+
 function cancelSession() {
   showConfirm({
     icon: '❌',
@@ -873,13 +1040,13 @@ function onTimerEnd() {
     const focusMins = Math.round(timerTotal / 60);
     studyMins += focusMins;
     S.set('sf_study_' + today(), studyMins);
-    addXP(focusMins);
     const subject = document.getElementById('subject-input').value || 'Không rõ';
     sessions.push({ subject, mins: focusMins, time: new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'}) });
     S.set('sf_sessions_' + today(), sessions);
     renderSessions();
     pomoSession++;
-    showToast('🍅 +' + focusMins + ' XP! Nghỉ một chút nhé.');
+    playDoneSound();
+    showToast('🍅 Xong! Nghỉ một chút nhé.');
     scheduleNotifDirect('Nghỉ ngơi!', 'Đã xong 1 phiên học. Nghỉ một chút nhé 😊', 500);
     pomoPhase = 'break';
     const isLong = pomoSession % 4 === 0;
@@ -941,16 +1108,14 @@ function deleteSession(idx) {
   showConfirm({
     icon: '🗑',
     msg: 'Xoá phiên học này?',
-    sub: 'Thời gian và XP của phiên này sẽ bị trừ.',
+    sub: 'Thời gian của phiên này sẽ bị trừ.',
     okLabel: 'Xoá',
     okStyle: 'background:var(--red);border-color:var(--red);color:#fff;',
     onOK: () => {
       const removed = sessions.splice(idx, 1)[0];
       studyMins = Math.max(0, studyMins - (removed.mins || 0));
-      xp = Math.max(0, xp - (removed.mins || 0));
       S.set('sf_sessions_' + today(), sessions);
       S.set('sf_study_' + today(), studyMins);
-      S.set('sf_xp', xp);
       renderSessions();
       renderToday();
       showToast('🗑 Đã xoá phiên học');
@@ -968,11 +1133,9 @@ function clearAllSessions() {
     onOK: () => {
       const totalMins = sessions.reduce((sum, s) => sum + (s.mins || 0), 0);
       studyMins = Math.max(0, studyMins - totalMins);
-      xp = Math.max(0, xp - totalMins);
       sessions = [];
       S.set('sf_sessions_' + today(), sessions);
       S.set('sf_study_' + today(), studyMins);
-      S.set('sf_xp', xp);
       renderSessions();
       renderToday();
       showToast('🗑 Đã xoá toàn bộ lịch sử');
