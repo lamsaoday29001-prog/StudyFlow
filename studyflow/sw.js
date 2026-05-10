@@ -1,4 +1,4 @@
-const CACHE_NAME = 'studyflow-v1';
+const CACHE_NAME = 'studyflow-v2';
 const urlsToCache = ['/', '/index.html'];
 
 self.addEventListener('install', e => {
