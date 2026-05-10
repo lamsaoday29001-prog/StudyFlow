@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="theme-color" content="#0a0a0f"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="StudyFlow"/>
+<title>StudyFlow</title>
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="data:image/png;base64,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"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #12121a;
+  --bg3: #1a1a25;
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.15);
+  --text: #f0f0f5;
+  --text2: #9090a8;
+  --text3: #55556a;
+  --accent: #7c6fff;
+  --accent2: #a594ff;
+  --green: #2dd68c;
+  --green2: #1a9e6a;
+  --red: #ff5566;
+  --amber: #ffb340;
+  --blue: #4da6ff;
+  --pink: #ff6eb4;
+  --mono: 'Space Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+  --r: 16px;
+  --r2: 12px;
+  --bottom-h: 70px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: var(--sans); }
+body { display: flex; flex-direction: column; }
+
+.page { display: none; flex-direction: column; flex: 1; overflow-y: auto; padding: 0 0 calc(var(--bottom-h) + 16px); }
+.page.active { display: flex; }
+.page-inner { padding: 0 16px; }
+
+.app-header { padding: 52px 20px 16px; background: var(--bg); position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--border); }
+.app-header h1 { font-family: var(--mono); font-size: 13px; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+.app-header h2 { font-size: 22px; font-weight: 600; color: var(--text); }
+.header-row { display: flex; align-items: flex-end; justify-content: space-between; }
+
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: var(--bottom-h); background: var(--bg2); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-around; z-index: 100; padding-bottom: env(safe-area-inset-bottom); }
+.nav-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 16px; cursor: pointer; border: none; background: none; color: var(--text3); transition: color 0.2s; flex: 1; }
+.nav-btn i { font-size: 22px; }
+.nav-btn span { font-size: 10px; font-family: var(--sans); letter-spacing: 0.02em; }
+.nav-btn.active { color: var(--accent2); }
+.nav-icon { font-size: 22px; line-height: 1; display: block; }
+
+.card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r); padding: 16px; margin-bottom: 12px; }
+.card-sm { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r2); padding: 12px; }
+
+.sec { font-size: 12px; font-family: var(--mono); color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; margin: 20px 0 10px; }
+
+.metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 4px; }
+.metric-box { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r2); padding: 12px 10px; text-align: center; }
+.metric-box .val { font-family: var(--mono); font-size: 20px; font-weight: 700; }
+.metric-box .lbl { font-size: 10px; color: var(--text3); margin-top: 3px; }
+
+/* ── DAILY TASK STYLES ── */
+.cat-block { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r); margin-bottom: 12px; overflow: hidden; }
+.cat-header { display: flex; align-items: center; justify-content: space-between; padding: 13px 14px; cursor: pointer; }
+.cat-header-left { display: flex; align-items: center; gap: 10px; }
+.cat-icon { font-size: 18px; }
+.cat-name { font-size: 15px; font-weight: 600; }
+.cat-progress { font-size: 11px; font-family: var(--mono); color: var(--text3); }
+.cat-progress-bar { height: 3px; background: var(--bg3); margin: 0 14px 0; border-radius: 999px; overflow: hidden; }
+.cat-progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 999px; transition: width 0.4s ease; }
+.cat-tasks { padding: 8px 12px 12px; border-top: 1px solid var(--border); }
+.cat-collapsed .cat-tasks { display: none; }
+.cat-collapsed .cat-progress-bar { display: none; }
+
+.dt-item { display: flex; align-items: center; gap: 12px; padding: 10px 10px; border-radius: var(--r2); margin-bottom: 6px; cursor: pointer; transition: background 0.15s; }
+.dt-item:active { opacity: 0.7; }
+.dt-item:last-child { margin-bottom: 0; }
+.dt-check { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--border2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.dt-check.done { background: var(--green); border-color: var(--green); }
+.dt-check.done::after { content: '✓'; font-size: 12px; color: #000; font-weight: 700; }
+.dt-name { flex: 1; font-size: 14px; font-weight: 500; }
+.dt-name.done { text-decoration: line-through; color: var(--text3); }
+.dt-xp { font-size: 10px; font-family: var(--mono); color: var(--accent2); flex-shrink: 0; }
+.dt-del { background: none; border: none; color: var(--text3); font-size: 15px; cursor: pointer; padding: 4px; flex-shrink: 0; opacity: 0; transition: opacity 0.2s; }
+.dt-item:hover .dt-del { opacity: 1; }
+
+.add-task-row { display: flex; gap: 8px; margin-top: 10px; }
+.add-task-input { flex: 1; background: var(--bg3); border: 1px solid var(--border); border-radius: 999px; color: var(--text); font-family: var(--sans); font-size: 13px; padding: 8px 14px; outline: none; }
+.add-task-input:focus { border-color: var(--accent); }
+.add-task-btn { width: 34px; height: 34px; border-radius: 50%; background: var(--accent); border: none; color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+.cat-del-btn { background: none; border: none; color: var(--text3); font-size: 16px; cursor: pointer; padding: 4px 6px; }
+
+/* Daily summary bar */
+.daily-summary { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r2); padding: 14px; margin-bottom: 4px; }
+.daily-summary-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.daily-pct { font-family: var(--mono); font-size: 26px; font-weight: 700; color: var(--green); }
+.daily-sub { font-size: 12px; color: var(--text3); }
+.daily-bar { height: 6px; background: var(--bg2); border-radius: 999px; overflow: hidden; }
+.daily-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 999px; transition: width 0.5s ease; }
+
+/* ── END DAILY TASK STYLES ── */
+
+.task-item { display: flex; align-items: center; gap: 12px; padding: 13px 14px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); margin-bottom: 8px; cursor: pointer; transition: border-color 0.2s; }
+.task-item:active { opacity: 0.7; }
+.task-check { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--border2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.task-check.done { background: var(--green); border-color: var(--green); }
+.task-check.done::after { content: '✓'; font-size: 11px; color: #000; font-weight: 700; }
+.task-body { flex: 1; min-width: 0; }
+.task-name { font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.task-name.done { text-decoration: line-through; color: var(--text3); }
+.task-meta { font-size: 11px; color: var(--text3); margin-top: 2px; }
+.task-badge { font-size: 10px; padding: 3px 8px; border-radius: 999px; font-family: var(--mono); flex-shrink: 0; }
+.badge-study { background: rgba(124,111,255,0.15); color: var(--accent2); }
+.badge-health { background: rgba(45,214,140,0.15); color: var(--green); }
+.badge-daily { background: rgba(255,179,64,0.15); color: var(--amber); }
+
+.timer-ring-wrap { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
+.timer-circle { position: relative; width: 200px; height: 200px; }
+.timer-circle svg { transform: rotate(-90deg); }
+.timer-circle .bg-ring { fill: none; stroke: var(--bg3); stroke-width: 10; }
+.timer-circle .prog-ring { fill: none; stroke: var(--accent); stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
+.timer-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+.timer-time { font-family: var(--mono); font-size: 38px; font-weight: 700; color: var(--text); }
+.timer-mode { font-size: 11px; color: var(--text3); margin-top: 4px; letter-spacing: 0.06em; }
+.timer-controls { display: flex; gap: 12px; margin-top: 20px; }
+.btn { padding: 11px 22px; border-radius: 999px; border: 1px solid var(--border2); background: none; color: var(--text); font-family: var(--sans); font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.15s; }
+.btn:active { transform: scale(0.96); }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-green { background: var(--green2); border-color: var(--green); color: #fff; }
+.btn-sm { padding: 7px 14px; font-size: 12px; }
+.pomo-dots { display: flex; gap: 8px; margin-top: 16px; }
+.pomo-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--bg3); border: 1px solid var(--border2); }
+.pomo-dot.done { background: var(--green); border-color: var(--green); }
+.pomo-dot.active { background: var(--accent); border-color: var(--accent); }
+.mode-tabs { display: flex; gap: 6px; padding: 0 16px; margin-bottom: 4px; }
+.mode-tab { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border); background: none; color: var(--text3); font-size: 12px; cursor: pointer; font-family: var(--sans); }
+.mode-tab.active { background: var(--bg3); color: var(--text); border-color: var(--border2); }
+
+
+
+.note-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r); padding: 14px; margin-bottom: 10px; cursor: pointer; }
+.note-card:active { opacity: 0.7; }
+.note-date { font-size: 10px; font-family: var(--mono); color: var(--text3); margin-bottom: 6px; }
+.note-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.note-preview { font-size: 13px; color: var(--text2); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200; align-items: flex-end; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r) var(--r) 0 0; padding: 20px; width: 100%; max-height: 85vh; overflow-y: auto; animation: slideUp 0.25s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.modal-title { font-size: 17px; font-weight: 600; margin-bottom: 16px; }
+.modal-handle { width: 36px; height: 4px; background: var(--border2); border-radius: 999px; margin: 0 auto 16px; }
+.field { margin-bottom: 14px; }
+.field label { font-size: 12px; color: var(--text3); font-family: var(--mono); display: block; margin-bottom: 6px; }
+.field input, .field textarea, .field select {
+  width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r2);
+  color: var(--text); font-family: var(--sans); font-size: 14px; padding: 11px 13px; outline: none;
+}
+.field input:focus, .field textarea:focus, .field select:focus { border-color: var(--accent); }
+.field textarea { min-height: 90px; resize: none; }
+.field select option { background: var(--bg2); }
+.modal-actions { display: flex; gap: 8px; margin-top: 4px; }
+.modal-actions .btn { flex: 1; justify-content: center; }
+
+
+
+.fab { position: fixed; bottom: calc(var(--bottom-h) + 16px); right: 16px; width: 52px; height: 52px; border-radius: 50%; background: var(--accent); border: none; color: #fff; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(124,111,255,0.4); z-index: 50; }
+.fab:active { transform: scale(0.94); }
+
+.toast { position: fixed; top: 60px; left: 50%; transform: translateX(-50%) translateY(-80px); background: var(--bg3); border: 1px solid var(--border2); border-radius: 999px; padding: 10px 20px; font-size: 13px; z-index: 999; transition: transform 0.3s ease; white-space: nowrap; }
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+.notif-banner { background: rgba(124,111,255,0.1); border: 1px solid rgba(124,111,255,0.25); border-radius: var(--r2); padding: 12px 14px; font-size: 13px; color: var(--accent2); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+
+.greeting { font-size: 24px; font-weight: 600; background: linear-gradient(135deg, var(--text) 0%, var(--accent2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.greeting-sub { font-size: 13px; color: var(--text3); margin-top: 4px; }
+
+hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+.empty { text-align: center; padding: 40px 20px; color: var(--text3); font-size: 14px; }
+.empty i { font-size: 40px; display: block; margin-bottom: 10px; }
+
+.confirm-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 500; align-items: center; justify-content: center; padding: 20px; }
+.confirm-overlay.open { display: flex; }
+.confirm-box { background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--r); padding: 24px 20px; width: 100%; max-width: 320px; text-align: center; animation: popIn 0.2s ease; }
+@keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.confirm-icon { font-size: 32px; margin-bottom: 12px; }
+.confirm-msg { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+.confirm-sub { font-size: 13px; color: var(--text3); margin-bottom: 20px; line-height: 1.5; }
+.confirm-btns { display: flex; gap: 10px; }
+.confirm-btns .btn { flex: 1; justify-content: center; }
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- PAGE: TODAY -->
+<div class="page active" id="page-today">
+  <div class="app-header">
+    <div class="header-row">
+      <div>
+        <div id="greeting" class="greeting">Chào buổi sáng!</div>
+        <div class="greeting-sub" id="today-date"></div>
+      </div>
+      <div style="font-family:var(--mono);font-size:20px;color:var(--accent2);" id="live-clock"></div>
+    </div>
+  </div>
+  <div class="page-inner" style="padding-top:16px;">
+    <div id="notif-prompt" class="notif-banner" onclick="requestNotifPerm()" style="display:none;">
+      <i class="ti ti-bell"></i> Bật thông báo để nhắc nhở đúng giờ
+    </div>
+    <div class="metric-grid">
+      <div class="metric-box">
+        <div class="val" id="m-done" style="color:var(--green);">0%</div>
+        <div class="lbl">Hoàn thành</div>
+      </div>
+
+      <div class="metric-box">
+        <div class="val" id="m-study" style="color:var(--accent2);">0'</div>
+        <div class="lbl">Học hôm nay</div>
+      </div>
+    </div>
+    <div class="sec">Nhiệm vụ hôm nay</div>
+    <div id="today-tasks"></div>
+    <div class="sec">Sắp tới</div>
+    <div id="upcoming-notes"></div>
+  </div>
+</div>
+
+<!-- PAGE: TIMER -->
+<div class="page" id="page-timer">
+  <div class="app-header">
+    <h1>StudyFlow</h1>
+    <h2>Bấm giờ học</h2>
+  </div>
+  <div class="page-inner" style="padding-top:12px;">
+    <div class="mode-tabs" style="padding:0;margin-bottom:12px;">
+      <button class="mode-tab active" onclick="setTimerMode('pomodoro',this)">🍅 Pomodoro</button>
+      <button class="mode-tab" onclick="setTimerMode('deep',this)">🧠 Tập trung sâu</button>
+      <button class="mode-tab" onclick="setTimerMode('free',this)">⏱ Tự do</button>
+    </div>
+    <div id="free-duration-row" style="display:none;margin-bottom:16px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:12px 14px;">
+      <div style="font-size:12px;font-family:var(--mono);color:var(--text3);margin-bottom:10px;letter-spacing:0.06em;">⏱ ĐẶT THỜI GIAN TỰ DO</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="flex:1;text-align:center;">
+          <div style="font-size:11px;color:var(--text3);margin-bottom:6px;">Giờ</div>
+          <input type="number" id="free-hours" min="0" max="5" value="0" oninput="applyFreeDuration()"
+            style="width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:var(--mono);font-size:22px;font-weight:700;padding:10px;text-align:center;outline:none;"/>
+        </div>
+        <div style="font-size:22px;color:var(--text3);padding-top:16px;">:</div>
+        <div style="flex:1;text-align:center;">
+          <div style="font-size:11px;color:var(--text3);margin-bottom:6px;">Phút</div>
+          <input type="number" id="free-mins" min="1" max="59" value="30" oninput="applyFreeDuration()"
+            style="width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:var(--mono);font-size:22px;font-weight:700;padding:10px;text-align:center;outline:none;"/>
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;">
+        <button onclick="setFreePreset(15)" class="btn btn-sm" style="flex:1;">15'</button>
+        <button onclick="setFreePreset(30)" class="btn btn-sm" style="flex:1;">30'</button>
+        <button onclick="setFreePreset(45)" class="btn btn-sm" style="flex:1;">45'</button>
+        <button onclick="setFreePreset(60)" class="btn btn-sm" style="flex:1;">60'</button>
+        <button onclick="setFreePreset(90)" class="btn btn-sm" style="flex:1;">90'</button>
+      </div>
+    </div>
+    <div class="timer-ring-wrap">
+      <div class="timer-circle">
+        <svg viewBox="0 0 200 200" width="200" height="200">
+          <circle class="bg-ring" cx="100" cy="100" r="85"/>
+          <circle class="prog-ring" id="prog-ring" cx="100" cy="100" r="85" stroke-dasharray="534" stroke-dashoffset="0"/>
+        </svg>
+        <div class="timer-text">
+          <div class="timer-time" id="timer-disp">25:00</div>
+          <div class="timer-mode" id="timer-mode-lbl">FOCUS</div>
+        </div>
+      </div>
+      <div class="pomo-dots" id="pomo-dots">
+        <div class="pomo-dot active"></div>
+        <div class="pomo-dot"></div>
+        <div class="pomo-dot"></div>
+        <div class="pomo-dot"></div>
+      </div>
+      <div class="timer-controls">
+        <button class="btn" onclick="resetTimer()" title="Reset">🔄</button>
+        <button class="btn btn-primary" id="timer-btn" onclick="toggleTimer()">▶ Bắt đầu</button>
+        <button class="btn" onclick="cancelSession()" title="Huỷ phiên" id="cancel-btn" style="display:none;background:rgba(255,85,102,0.15);border-color:var(--red);color:var(--red);">✕ Huỷ</button>
+        <button class="btn" onclick="skipTimer()" title="Bỏ qua" id="skip-btn">⏭</button>
+      </div>
+    </div>
+    <div class="sec">Môn đang học</div>
+    <div class="field" style="margin-bottom:8px;">
+      <input type="text" id="subject-input" placeholder="Nhập môn học (vd: Toán, Tiếng Anh...)" style="border-radius:999px;"/>
+    </div>
+    <div class="sec">Lịch sử hôm nay</div>
+    <div id="session-log"></div>
+  </div>
+</div>
+
+<!-- PAGE: DAILY TASKS -->
+<div class="page" id="page-tasks">
+  <div class="app-header">
+    <div class="header-row">
+      <div>
+        <h1>StudyFlow</h1>
+        <h2>Việc làm hằng ngày</h2>
+      </div>
+      <button class="btn btn-sm" onclick="openAddCatModal()" style="flex-shrink:0;">+ Danh mục</button>
+    </div>
+  </div>
+  <div class="page-inner" style="padding-top:16px;">
+    <!-- Summary bar -->
+    <div class="daily-summary" id="daily-summary">
+      <div class="daily-summary-top">
+        <div>
+          <div class="daily-pct" id="daily-pct">0%</div>
+          <div class="daily-sub" id="daily-sub">0/0 nhiệm vụ hoàn thành</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:11px;color:var(--text3);font-family:var(--mono);">HÔM NAY</div>
+          <div style="font-size:13px;color:var(--accent2);margin-top:2px;" id="daily-xp-earned">+0 XP</div>
+        </div>
+      </div>
+      <div class="daily-bar"><div class="daily-bar-fill" id="daily-bar-fill" style="width:0%"></div></div>
+    </div>
+
+    <div id="cat-list"></div>
+
+    <div id="daily-empty" class="empty" style="display:none;">
+      <i class="ti ti-layout-list"></i>
+      Chưa có danh mục nào<br>
+      <small>Nhấn <strong>+ Danh mục</strong> để bắt đầu</small>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: NOTES -->
+<div class="page" id="page-notes">
+  <div class="app-header">
+    <h1>StudyFlow</h1>
+    <h2>Ghi chú & Lịch</h2>
+  </div>
+  <div class="page-inner" style="padding-top:16px;">
+    <div id="note-list"></div>
+    <div id="note-empty" class="empty" style="display:none;"><i class="ti ti-notes"></i>Chưa có ghi chú<br><small>Nhấn + để thêm mới</small></div>
+  </div>
+  <button class="fab" onclick="openNoteModal()"><i class="ti ti-plus"></i></button>
+</div>
+
+
+
+
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-btn active" onclick="switchPage('today',this)"><span class="nav-icon">🏠</span><span>Hôm nay</span></button>
+  <button class="nav-btn" onclick="switchPage('timer',this)"><span class="nav-icon">⏱</span><span>Bấm giờ</span></button>
+  <button class="nav-btn" onclick="switchPage('tasks',this)"><span class="nav-icon">✅</span><span>Việc làm</span></button>
+  <button class="nav-btn" onclick="switchPage('notes',this)"><span class="nav-icon">📝</span><span>Ghi chú</span></button>
+</nav>
+
+<!-- MODAL: ADD CATEGORY -->
+<div class="modal-overlay" id="cat-modal" onclick="closeModal('cat-modal',event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Thêm danh mục</div>
+    <div class="field">
+      <label>Tên danh mục</label>
+      <input type="text" id="cat-name-input" placeholder="Vd: Học tập, Sức khoẻ, Thói quen..."/>
+    </div>
+    <div class="field">
+      <label>Biểu tượng</label>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;" id="emoji-picker">
+        <!-- rendered by JS -->
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('cat-modal')">Huỷ</button>
+      <button class="btn btn-primary" onclick="saveCategory()">Tạo danh mục</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: ADD NOTE -->
+<div class="modal-overlay" id="note-modal" onclick="closeModal('note-modal',event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Thêm ghi chú</div>
+    <div class="field"><label>Tiêu đề</label><input type="text" id="n-title" placeholder="Vd: Lịch thi giữa kỳ"/></div>
+    <div class="field"><label>Nội dung</label><textarea id="n-body" placeholder="Ghi chú chi tiết..."></textarea></div>
+    <div class="field"><label>Ngày liên quan (tuỳ chọn)</label><input type="date" id="n-date"/></div>
+    <div class="field"><label>Nhắc nhở trước (ngày)</label>
+      <select id="n-remind">
+        <option value="0">Không nhắc</option>
+        <option value="1">1 ngày trước</option>
+        <option value="3">3 ngày trước</option>
+        <option value="7">7 ngày trước</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('note-modal')">Huỷ</button>
+      <button class="btn btn-primary" onclick="saveNote()">Lưu</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM DIALOG -->
+<div class="confirm-overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <div class="confirm-icon" id="confirm-icon">⚠️</div>
+    <div class="confirm-msg" id="confirm-msg">Bạn chắc chắn?</div>
+    <div class="confirm-sub" id="confirm-sub"></div>
+    <div class="confirm-btns">
+      <button class="btn" onclick="confirmCancel()">Không</button>
+      <button class="btn" id="confirm-ok-btn" onclick="confirmOK()" style="background:var(--red);border-color:var(--red);color:#fff;">Xoá</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── STORAGE ──────────────────────────────────────────────
+const S = {
+  get: k => { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+  set: (k,v) => localStorage.setItem(k, JSON.stringify(v)),
+};
+
+// ─── CUSTOM CONFIRM DIALOG ─────────────────────────────────
+let _confirmCallback = null;
+
+function showConfirm({ icon = '⚠️', msg, sub = '', okLabel = 'Xoá', okStyle = 'background:var(--red);border-color:var(--red);color:#fff;', onOK }) {
+  document.getElementById('confirm-icon').textContent = icon;
+  document.getElementById('confirm-msg').textContent = msg;
+  document.getElementById('confirm-sub').textContent = sub;
+  const okBtn = document.getElementById('confirm-ok-btn');
+  okBtn.textContent = okLabel;
+  okBtn.style.cssText = okStyle;
+  _confirmCallback = onOK;
+  document.getElementById('confirm-overlay').classList.add('open');
+}
+
+function confirmOK() {
+  const cb = _confirmCallback;
+  _confirmCallback = null;
+  document.getElementById('confirm-overlay').classList.remove('open');
+  if (cb) cb();
+}
+
+function confirmCancel() {
+  _confirmCallback = null;
+  document.getElementById('confirm-overlay').classList.remove('open');
+}
+
+// ─── STATE ─────────────────────────────────────────────────
+let notes = S.get('sf_notes') || [];
+let xp = S.get('sf_xp') || 0;
+let studyMins = S.get('sf_study_' + today()) || 0;
+let screenData = S.get('sf_screen_' + today()) || {};
+let sessions = S.get('sf_sessions_' + today()) || [];
+
+// ─── DAILY TASKS STATE ─────────────────────────────────────
+// categories: [{ id, name, icon, tasks: [{id, name, xp}] }]
+// dailyTicks: { 'YYYY-MM-DD': { taskId: true } }
+let categories = S.get('sf_categories') || [];
+let dailyTicks = S.get('sf_daily_ticks') || {};
+
+function today() { return new Date().toISOString().slice(0,10); }
+function saveCategories() { S.set('sf_categories', categories); }
+function saveTicks() { S.set('sf_daily_ticks', dailyTicks); }
+
+// Reset ticks cho ngày mới (chỉ giữ 7 ngày gần nhất)
+function cleanOldTicks() {
+  const keys = Object.keys(dailyTicks);
+  const cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 30);
+  keys.forEach(k => { if (k < cutoff.toISOString().slice(0,10)) delete dailyTicks[k]; });
+  saveTicks();
+}
+
+function getTodayTicks() {
+  return dailyTicks[today()] || {};
+}
+
+function isTaskDone(taskId) {
+  return !!(getTodayTicks()[taskId]);
+}
+
+function toggleDailyTask(taskId, xpAmt) {
+  if (!dailyTicks[today()]) dailyTicks[today()] = {};
+  const wasDone = dailyTicks[today()][taskId];
+  if (wasDone) {
+    delete dailyTicks[today()][taskId];
+    xp = Math.max(0, xp - xpAmt);
+    S.set('sf_xp', xp);
+    showToast('↩️ Bỏ tick · -' + xpAmt + ' XP');
+  } else {
+    dailyTicks[today()][taskId] = true;
+    addXP(xpAmt);
+    showToast('✅ +' + xpAmt + ' XP!');
+  }
+  saveTicks();
+  renderDailyTasks();
+  renderToday();
+}
+
+// ─── GREETING & CLOCK ──────────────────────────────────────
+function updateClock() {
+  const now = new Date();
+  const h = now.getHours();
+  const greeting = h < 12 ? 'Chào buổi sáng!' : h < 18 ? 'Chào buổi chiều!' : 'Chào buổi tối!';
+  document.getElementById('greeting').textContent = greeting;
+  document.getElementById('live-clock').textContent =
+    String(h).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+  document.getElementById('today-date').textContent =
+    now.toLocaleDateString('vi-VN', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// ─── PAGES ─────────────────────────────────────────────────
+function switchPage(name, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  if (el) el.classList.add('active');
+  renderPage(name);
+}
+
+function renderPage(name) {
+  if (name === 'today') renderToday();
+  if (name === 'tasks') renderDailyTasks();
+  if (name === 'notes') renderNotes();
+}
+
+// ─── TODAY ─────────────────────────────────────────────────
+function renderToday() {
+  // Tính % daily tasks
+  const ticks = getTodayTicks();
+  let totalTasks = 0, doneTasks = 0;
+  categories.forEach(cat => {
+    cat.tasks.forEach(t => {
+      totalTasks++;
+      if (ticks[t.id]) doneTasks++;
+    });
+  });
+  const pct = totalTasks ? Math.round(doneTasks / totalTasks * 100) : 0;
+  document.getElementById('m-done').textContent = pct + '%';
+  document.getElementById('m-study').textContent = studyMins + "'";
+
+  const el = document.getElementById('today-tasks');
+  if (!categories.length) {
+    el.innerHTML = '<div class="empty" style="padding:20px 0;"><i class="ti ti-layout-list"></i>Chưa có nhiệm vụ hôm nay<br><small>Vào tab Việc làm để tạo</small></div>';
+  } else {
+    // Hiển thị tóm tắt nhanh từng danh mục
+    el.innerHTML = categories.map(cat => {
+      const catDone = cat.tasks.filter(t => ticks[t.id]).length;
+      const catTotal = cat.tasks.length;
+      const catPct = catTotal ? Math.round(catDone / catTotal * 100) : 0;
+      return `<div class="card-sm" style="margin-bottom:8px;display:flex;align-items:center;gap:12px;">
+        <div style="font-size:22px;">${cat.icon}</div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:600;">${cat.name}</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:2px;">${catDone}/${catTotal} nhiệm vụ</div>
+        </div>
+        <div style="font-family:var(--mono);font-size:15px;font-weight:700;color:${catPct===100?'var(--green)':'var(--accent2)'};">${catPct}%</div>
+      </div>`;
+    }).join('');
+  }
+
+  const upcoming = notes.filter(n => n.date && n.date >= today()).slice(0,3);
+  const upEl = document.getElementById('upcoming-notes');
+  upEl.innerHTML = upcoming.length ? upcoming.map(n => `
+    <div class="card-sm" style="margin-bottom:8px;">
+      <div style="font-size:11px;font-family:var(--mono);color:var(--text3);">${n.date}</div>
+      <div style="font-size:14px;font-weight:500;margin-top:2px;">${n.title}</div>
+    </div>`).join('') : '<div style="font-size:13px;color:var(--text3);padding:8px 0;">Không có sự kiện sắp tới</div>';
+}
+
+// ─── DAILY TASKS ───────────────────────────────────────────
+const EMOJIS = ['📚','💪','🧠','🎯','🌱','🎨','🎵','💻','🏃','🧘','✍️','🍎','💊','🛌','📖','🔬','🎤','🌍'];
+let selectedEmoji = '📚';
+
+function openAddCatModal() {
+  document.getElementById('cat-name-input').value = '';
+  selectedEmoji = '📚';
+  // render emoji picker
+  document.getElementById('emoji-picker').innerHTML = EMOJIS.map(e =>
+    `<button onclick="selectEmoji('${e}',this)" style="font-size:22px;width:44px;height:44px;border-radius:10px;border:2px solid ${e===selectedEmoji?'var(--accent)':'var(--border)'};background:${e===selectedEmoji?'rgba(124,111,255,0.15)':'var(--bg3)'};cursor:pointer;transition:all 0.15s;">${e}</button>`
+  ).join('');
+  document.getElementById('cat-modal').classList.add('open');
+  setTimeout(() => document.getElementById('cat-name-input').focus(), 350);
+}
+
+function selectEmoji(e, el) {
+  selectedEmoji = e;
+  document.querySelectorAll('#emoji-picker button').forEach(b => {
+    b.style.border = '2px solid var(--border)';
+    b.style.background = 'var(--bg3)';
+  });
+  el.style.border = '2px solid var(--accent)';
+  el.style.background = 'rgba(124,111,255,0.15)';
+}
+
+function saveCategory() {
+  const name = document.getElementById('cat-name-input').value.trim();
+  if (!name) { showToast('⚠️ Nhập tên danh mục'); return; }
+  categories.push({ id: Date.now(), name, icon: selectedEmoji, tasks: [] });
+  saveCategories();
+  closeModal('cat-modal');
+  showToast('✅ Đã thêm danh mục');
+  renderDailyTasks();
+}
+
+function deleteCategory(catId) {
+  showConfirm({
+    icon: '🗂',
+    msg: 'Xoá danh mục này?',
+    sub: 'Tất cả nhiệm vụ trong danh mục cũng sẽ bị xoá.',
+    okLabel: 'Xoá',
+    onOK: () => {
+      categories = categories.filter(c => c.id !== catId);
+      saveCategories();
+      renderDailyTasks();
+      renderToday();
+      showToast('🗑 Đã xoá danh mục');
+    }
+  });
+}
+
+function addTaskToCategory(catId) {
+  const input = document.getElementById('task-input-' + catId);
+  const name = input.value.trim();
+  if (!name) return;
+  const cat = categories.find(c => c.id === catId);
+  if (!cat) return;
+  cat.tasks.push({ id: Date.now(), name, xp: 10 });
+  saveCategories();
+  input.value = '';
+  renderDailyTasks();
+}
+
+function deleteTaskFromCategory(catId, taskId) {
+  const cat = categories.find(c => c.id === catId);
+  if (!cat) return;
+  // Remove tick if exists
+  if (dailyTicks[today()]) delete dailyTicks[today()][taskId];
+  saveTicks();
+  cat.tasks = cat.tasks.filter(t => t.id !== taskId);
+  saveCategories();
+  renderDailyTasks();
+  renderToday();
+}
+
+function toggleCatCollapse(catId) {
+  const el = document.getElementById('cat-block-' + catId);
+  el.classList.toggle('cat-collapsed');
+}
+
+function renderDailyTasks() {
+  const ticks = getTodayTicks();
+  let totalAll = 0, doneAll = 0, xpEarned = 0;
+  categories.forEach(cat => {
+    cat.tasks.forEach(t => {
+      totalAll++;
+      if (ticks[t.id]) { doneAll++; xpEarned += t.xp; }
+    });
+  });
+  const pct = totalAll ? Math.round(doneAll / totalAll * 100) : 0;
+
+  // Summary
+  document.getElementById('daily-pct').textContent = pct + '%';
+  document.getElementById('daily-sub').textContent = doneAll + '/' + totalAll + ' nhiệm vụ hoàn thành';
+  document.getElementById('daily-bar-fill').style.width = pct + '%';
+  document.getElementById('daily-xp-earned').textContent = '+' + xpEarned + ' XP hôm nay';
+
+  const listEl = document.getElementById('cat-list');
+  const emptyEl = document.getElementById('daily-empty');
+
+  if (!categories.length) {
+    listEl.innerHTML = '';
+    emptyEl.style.display = '';
+    return;
+  }
+  emptyEl.style.display = 'none';
+
+  listEl.innerHTML = categories.map(cat => {
+    const catDone = cat.tasks.filter(t => ticks[t.id]).length;
+    const catTotal = cat.tasks.length;
+    const catPct = catTotal ? Math.round(catDone / catTotal * 100) : 0;
+    const tasksHTML = cat.tasks.map(t => {
+      const done = !!ticks[t.id];
+      return `<div class="dt-item" onclick="toggleDailyTask(${t.id}, ${t.xp})">
+        <div class="dt-check ${done ? 'done' : ''}"></div>
+        <div class="dt-name ${done ? 'done' : ''}">${t.name}</div>
+        <div class="dt-xp">+${t.xp} XP</div>
+        <button class="dt-del" onclick="event.stopPropagation();deleteTaskFromCategory(${cat.id},${t.id})" title="Xoá">✕</button>
+      </div>`;
+    }).join('');
+
+    return `<div class="cat-block" id="cat-block-${cat.id}">
+      <div class="cat-header" onclick="toggleCatCollapse(${cat.id})">
+        <div class="cat-header-left">
+          <span class="cat-icon">${cat.icon}</span>
+          <span class="cat-name">${cat.name}</span>
+          <span class="cat-progress">${catDone}/${catTotal}</span>
+        </div>
+        <button class="cat-del-btn" onclick="event.stopPropagation();deleteCategory(${cat.id})" title="Xoá danh mục">🗑</button>
+      </div>
+      <div class="cat-progress-bar"><div class="cat-progress-fill" style="width:${catPct}%"></div></div>
+      <div class="cat-tasks">
+        ${tasksHTML}
+        <div class="add-task-row">
+          <input class="add-task-input" id="task-input-${cat.id}" placeholder="Thêm nhiệm vụ..." 
+            onkeydown="if(event.key==='Enter')addTaskToCategory(${cat.id})"/>
+          <button class="add-task-btn" onclick="addTaskToCategory(${cat.id})">+</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── NOTES ─────────────────────────────────────────────────
+function renderNotes() {
+  const el = document.getElementById('note-list');
+  const emptyEl = document.getElementById('note-empty');
+  if (!notes.length) { el.innerHTML = ''; emptyEl.style.display = ''; return; }
+  emptyEl.style.display = 'none';
+  el.innerHTML = notes.slice().reverse().map(n => `
+    <div class="note-card">
+      <div class="note-date">${n.date ? '📅 ' + n.date : '💡 Ghi chú'}</div>
+      <div class="note-title">${n.title}</div>
+      <div class="note-preview">${n.body}</div>
+    </div>`).join('');
+}
+
+function openNoteModal() {
+  document.getElementById('n-title').value = '';
+  document.getElementById('n-body').value = '';
+  document.getElementById('n-date').value = '';
+  document.getElementById('note-modal').classList.add('open');
+}
+
+function saveNote() {
+  const title = document.getElementById('n-title').value.trim();
+  if (!title) { showToast('⚠️ Nhập tiêu đề'); return; }
+  const n = {
+    id: Date.now(), title,
+    body: document.getElementById('n-body').value,
+    date: document.getElementById('n-date').value,
+    remind: parseInt(document.getElementById('n-remind').value)
+  };
+  notes.push(n);
+  S.set('sf_notes', notes);
+  closeModal('note-modal');
+  showToast('📝 Đã lưu ghi chú');
+  renderNotes();
+}
+
+// ─── XP ────────────────────────────────────────────────────
+function addXP(amount) {
+  xp += amount;
+  S.set('sf_xp', xp);
+}
+
+// ─── POMODORO ──────────────────────────────────────────────
+let timerMode = 'pomodoro';
+let timerRunning = false;
+let timerInterval = null;
+let timerSeconds = 25 * 60;
+let timerTotal = 25 * 60;
+let pomoSession = 0;
+let pomoPhase = 'focus';
+const MODES = {
+  pomodoro: { focus: 25*60, break: 5*60, long: 15*60 },
+  deep: { focus: 50*60, break: 10*60, long: 20*60 },
+  free: { focus: 60*60, break: 0, long: 0 }
+};
+const CIRC = 2 * Math.PI * 85;
+
+function setTimerMode(m, el) {
+  timerMode = m;
+  document.querySelectorAll('#page-timer .mode-tab').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+  document.getElementById('free-duration-row').style.display = m === 'free' ? 'block' : 'none';
+  document.getElementById('pomo-dots').style.display = m === 'free' ? 'none' : 'flex';
+  if (m === 'free') { applyFreeDuration(); } else { resetTimer(); }
+}
+
+function applyFreeDuration() {
+  if (timerRunning) return;
+  const h = parseInt(document.getElementById('free-hours').value) || 0;
+  const m = parseInt(document.getElementById('free-mins').value) || 0;
+  const total = h * 3600 + m * 60;
+  if (total < 60) return;
+  MODES.free.focus = total;
+  timerTotal = timerSeconds = total;
+  updateTimerDisplay();
+}
+
+function setFreePreset(mins) {
+  if (timerRunning) { showToast('⚠️ Dừng timer trước khi đổi thời gian'); return; }
+  document.getElementById('free-hours').value = Math.floor(mins / 60);
+  document.getElementById('free-mins').value = mins % 60;
+  applyFreeDuration();
+  showToast('⏱ Đặt ' + mins + ' phút');
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(timerSeconds / 60);
+  const s = timerSeconds % 60;
+  document.getElementById('timer-disp').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  const pct = timerSeconds / timerTotal;
+  document.getElementById('prog-ring').style.strokeDashoffset = CIRC * pct;
+  document.getElementById('prog-ring').style.stroke = pomoPhase === 'break' ? 'var(--green)' : 'var(--accent)';
+  document.getElementById('timer-mode-lbl').textContent = pomoPhase === 'break' ? 'NGHỈ NGƠI' : 'TẬP TRUNG';
+}
+
+function toggleTimer() {
+  timerRunning = !timerRunning;
+  const btn = document.getElementById('timer-btn');
+  const cancelBtn = document.getElementById('cancel-btn');
+  if (timerRunning) {
+    timerInterval = setInterval(tickTimer, 1000);
+    btn.innerHTML = '⏸ Tạm dừng';
+    cancelBtn.style.display = 'inline-flex';
+  } else {
+    clearInterval(timerInterval);
+    btn.innerHTML = '▶ Tiếp tục';
+  }
+}
+
+function cancelSession() {
+  showConfirm({
+    icon: '❌',
+    msg: 'Huỷ phiên học này?',
+    sub: 'Thời gian học sẽ không được tính vào thống kê.',
+    okLabel: 'Huỷ phiên',
+    okStyle: 'background:var(--red);border-color:var(--red);color:#fff;',
+    onOK: () => {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      pomoPhase = 'focus';
+      timerTotal = timerSeconds = MODES[timerMode].focus;
+      updateTimerDisplay();
+      updatePomoDots();
+      document.getElementById('timer-btn').innerHTML = '▶ Bắt đầu';
+      document.getElementById('cancel-btn').style.display = 'none';
+      showToast('❌ Đã huỷ phiên học');
+    }
+  });
+}
+
+function tickTimer() {
+  timerSeconds--;
+  if (timerSeconds <= 0) {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    onTimerEnd();
+    return;
+  }
+  updateTimerDisplay();
+}
+
+function onTimerEnd() {
+  if (pomoPhase === 'focus') {
+    const focusMins = Math.round(timerTotal / 60);
+    studyMins += focusMins;
+    S.set('sf_study_' + today(), studyMins);
+    addXP(focusMins);
+    const subject = document.getElementById('subject-input').value || 'Không rõ';
+    sessions.push({ subject, mins: focusMins, time: new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'}) });
+    S.set('sf_sessions_' + today(), sessions);
+    renderSessions();
+    pomoSession++;
+    showToast('🍅 +' + focusMins + ' XP! Nghỉ một chút nhé.');
+    scheduleNotifDirect('Nghỉ ngơi!', 'Đã xong 1 phiên học. Nghỉ một chút nhé 😊', 500);
+    pomoPhase = 'break';
+    const isLong = pomoSession % 4 === 0;
+    timerTotal = timerSeconds = MODES[timerMode].break || 5*60;
+    if (timerMode !== 'free' && isLong) timerTotal = timerSeconds = MODES[timerMode].long || 15*60;
+  } else {
+    pomoPhase = 'focus';
+    timerTotal = timerSeconds = MODES[timerMode].focus;
+    showToast('💪 Sẵn sàng học tiếp!');
+  }
+  updateTimerDisplay();
+  updatePomoDots();
+  document.getElementById('timer-btn').innerHTML = '▶ Bắt đầu';
+  document.getElementById('cancel-btn').style.display = 'none';
+}
+
+function skipTimer() {
+  clearInterval(timerInterval); timerRunning = false;
+  onTimerEnd();
+}
+
+function resetTimer() {
+  clearInterval(timerInterval); timerRunning = false;
+  pomoPhase = 'focus';
+  timerTotal = timerSeconds = MODES[timerMode].focus;
+  updateTimerDisplay();
+  updatePomoDots();
+  document.getElementById('timer-btn').innerHTML = '▶ Bắt đầu';
+  document.getElementById('cancel-btn').style.display = 'none';
+}
+
+function updatePomoDots() {
+  const dots = document.getElementById('pomo-dots').children;
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].className = 'pomo-dot' + (i < pomoSession % 4 ? ' done' : i === pomoSession % 4 && pomoPhase === 'focus' ? ' active' : '');
+  }
+}
+
+function renderSessions() {
+  const el = document.getElementById('session-log');
+  if (!sessions.length) { el.innerHTML = '<div style="font-size:13px;color:var(--text3);padding:8px 0;">Chưa có phiên học nào hôm nay</div>'; return; }
+  el.innerHTML = `
+    <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
+      <button class="btn btn-sm" onclick="clearAllSessions()" style="color:var(--red);border-color:rgba(255,85,102,0.3);font-size:12px;">🗑 Xoá tất cả</button>
+    </div>
+    ${sessions.slice().reverse().map((s, ri) => {
+      const i = sessions.length - 1 - ri;
+      return `<div class="card-sm" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
+        <div><div style="font-size:14px;font-weight:500;">${s.subject}</div><div style="font-size:11px;color:var(--text3);">${s.time}</div></div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="font-family:var(--mono);font-size:13px;color:var(--accent2);">${s.mins}'</div>
+          <button onclick="deleteSession(${i})" style="background:none;border:none;color:var(--text3);font-size:16px;cursor:pointer;padding:4px;" title="Xoá">🗑</button>
+        </div>
+      </div>`;
+    }).join('')}`;
+}
+
+function deleteSession(idx) {
+  showConfirm({
+    icon: '🗑',
+    msg: 'Xoá phiên học này?',
+    sub: 'Thời gian và XP của phiên này sẽ bị trừ.',
+    okLabel: 'Xoá',
+    okStyle: 'background:var(--red);border-color:var(--red);color:#fff;',
+    onOK: () => {
+      const removed = sessions.splice(idx, 1)[0];
+      studyMins = Math.max(0, studyMins - (removed.mins || 0));
+      xp = Math.max(0, xp - (removed.mins || 0));
+      S.set('sf_sessions_' + today(), sessions);
+      S.set('sf_study_' + today(), studyMins);
+      S.set('sf_xp', xp);
+      renderSessions();
+      renderToday();
+      showToast('🗑 Đã xoá phiên học');
+    }
+  });
+}
+
+function clearAllSessions() {
+  showConfirm({
+    icon: '🗑',
+    msg: 'Xoá toàn bộ lịch sử?',
+    sub: 'Tất cả phiên học hôm nay sẽ bị xoá vĩnh viễn.',
+    okLabel: 'Xoá tất cả',
+    okStyle: 'background:var(--red);border-color:var(--red);color:#fff;',
+    onOK: () => {
+      const totalMins = sessions.reduce((sum, s) => sum + (s.mins || 0), 0);
+      studyMins = Math.max(0, studyMins - totalMins);
+      xp = Math.max(0, xp - totalMins);
+      sessions = [];
+      S.set('sf_sessions_' + today(), sessions);
+      S.set('sf_study_' + today(), studyMins);
+      S.set('sf_xp', xp);
+      renderSessions();
+      renderToday();
+      showToast('🗑 Đã xoá toàn bộ lịch sử');
+    }
+  });
+}
+
+// ─── NOTIFICATIONS ─────────────────────────────────────────
+async function requestNotifPerm() {
+  if (!('Notification' in window)) { showToast('⚠️ Trình duyệt không hỗ trợ thông báo'); return; }
+  const perm = await Notification.requestPermission();
+  if (perm === 'granted') {
+    document.getElementById('notif-prompt').style.display = 'none';
+    showToast('🔔 Đã bật thông báo!');
+    registerSW();
+  }
+}
+
+function checkNotifPrompt() {
+  if (!('Notification' in window)) return;
+  if (Notification.permission !== 'granted') document.getElementById('notif-prompt').style.display = 'flex';
+}
+
+function scheduleNotifDirect(title, body, delay) {
+  if (Notification.permission !== 'granted') return;
+  setTimeout(() => {
+    if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+      navigator.serviceWorker.controller.postMessage({ type:'SCHEDULE_NOTIFICATION', title, body, delay: 0 });
+    } else {
+      new Notification(title, { body, icon: '/icon-192.png' });
+    }
+  }, delay);
+}
+
+// ─── MODALS ─────────────────────────────────────────────────
+function closeModal(id, e) {
+  if (e && e.target !== document.getElementById(id)) return;
+  document.getElementById(id).classList.remove('open');
+}
+
+// ─── TOAST ─────────────────────────────────────────────────
+let toastTimeout;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ─── SERVICE WORKER ─────────────────────────────────────────
+async function registerSW() {
+  if ('serviceWorker' in navigator) {
+    try { await navigator.serviceWorker.register('/sw.js'); } catch(e) {}
+  }
+}
+
+// ─── INIT ───────────────────────────────────────────────────
+function init() {
+  registerSW();
+  checkNotifPrompt();
+  cleanOldTicks();
+  renderToday();
+  renderSessions();
+  updateTimerDisplay();
+  updatePomoDots();
+  document.getElementById('confirm-overlay').addEventListener('click', function(e) {
+    if (e.target === this) confirmCancel();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
